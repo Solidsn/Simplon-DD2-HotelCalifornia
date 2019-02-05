@@ -12,12 +12,16 @@ class Hotel:
     self.opened = opened
 
   def get_hotels(conn):
-    hotels = []
-
+    
     cur = conn.cursor()
+    cur.execute("""SELECT name,address,postcode,town,stars FROM hotel 
+  INNER JOIN country ON hotel.country = country.id
+  where open = 1;""")
 
-    # votre code ici
 
+    # votre code 
+    hotels = [{"country":elem[0], "address":elem[1], "postcode":elem[2], "town":elem[3], "stars":elem[4]} for elem in cur.fetchall()]
+    
     cur.close()
 
     return hotels

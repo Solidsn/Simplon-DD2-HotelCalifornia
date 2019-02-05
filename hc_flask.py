@@ -26,6 +26,8 @@ def reservations():
 
 @app.route("/find_room", methods=['GET', 'POST'])
 def find_room():
+
+	return render_template('room_number.html',)
     # help : request.args.get('email') returns the email field value of the web form
     #room_number = Reservation.find_room(...)
 
